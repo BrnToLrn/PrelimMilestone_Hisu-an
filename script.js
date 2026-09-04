@@ -32,27 +32,37 @@ function setupNavigation() {
 function setupContactForm() {
   const form = document.getElementById('contactForm');
   if (!form) return;
+
   form.addEventListener('submit', (event) => {
     event.preventDefault();
     const fields = [...form.querySelectorAll('input, textarea')];
     let valid = true;
+
     fields.forEach((field) => {
       const error = form.querySelector(`[data-error-for="${field.id}"]`);
       let message = '';
+
       if (!field.value.trim()) {
         message = 'This field is required.';
+      } else if (field.id === 'phone') {
+        const phPhoneRegex = /^(09\d{9}|\+639\d{9})$/;
+        if (!phPhoneRegex.test(field.value.trim())) {
+          message = 'Please enter a valid PH phone number (+639XXXXXXXXX or 09XXXXXXXXX).';
+        }
       } else if (!field.checkValidity()) {
-        message = field.id === 'phone' ? 'Use valid format (+639XXXXXXXXX or 09XXXXXXXXX).' : 'Please enter a valid value.';
+        message = 'Please enter a valid value.';
       }
+
       field.setAttribute('aria-invalid', String(Boolean(message)));
       if (error) error.textContent = message;
       if (message) valid = false;
     });
+
     const status = document.getElementById('formStatus');
     if (valid) {
       form.reset();
       fields.forEach((field) => field.removeAttribute('aria-invalid'));
-      status.textContent = 'Thanks! Your message has been submitted successfully.';
+      status.textContent = 'Thanks! Your message has been sent successfully.';
     } else {
       status.textContent = 'Please review the highlighted fields.';
       form.querySelector('[aria-invalid="true"]')?.focus();
@@ -70,8 +80,7 @@ async function setupProjects() {
     loading.classList.remove('is-hidden');
     error.classList.add('is-hidden');
 
-    /* 
-    // --- COMMENTED OUT GITHUB API FETCH ---
+    // Live GitHub REST API Request
     const params = new URLSearchParams({
       sort: 'updated',
       direction: 'desc',
@@ -85,32 +94,11 @@ async function setupProjects() {
     }
     
     repositories = await response.json();
-    */
-
-    // --- MOCK API FETCH VIA JSONPLACEHOLDER ---
-    const response = await fetch('https://jsonplaceholder.typicode.com/posts');
-    if (!response.ok) {
-      throw new Error(`Mock API returned status ${response.status}`);
-    }
-
-    const posts = await response.json();
-
-    // Map mock posts to match GitHub repository structure
-    repositories = posts.map((post) => ({
-      id: post.id,
-      name: post.title,
-      description: post.body,
-      language: 'JavaScript',
-      stargazers_count: Math.floor(Math.random() * 50),
-      forks_count: Math.floor(Math.random() * 10),
-      html_url: `https://jsonplaceholder.typicode.com/posts/${post.id}`
-    }));
-
     visibleRepositories = repositories;
     renderProjects();
   } catch (requestError) {
     console.error(requestError);
-    document.getElementById('errorMessage').textContent = 'Mock API could not be reached right now. Please try again in a moment.';
+    document.getElementById('errorMessage').textContent = 'Could not retrieve repositories from GitHub. Please check your connection or username.';
     error.classList.remove('is-hidden');
     document.getElementById('projectGrid').innerHTML = '';
   } finally {
