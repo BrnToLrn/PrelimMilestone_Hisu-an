@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Al's full-stack web development portfolio and prelim milestone.">
+  <title>Prelim Milestone 1</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Primary navigation">
+      <a class="brand" href="index.html" aria-label="Al Franzianne home">
+        <span class="brand-mark">A</span><span>Al Franzianne<span class="brand-dot">.</span></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-links">Menu</button>
+      <ul class="nav-links" id="primary-links">
+        <li><a class="active" href="index.html">Home</a></li>
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="projects.html">Projects</a></li>
+      </ul>
+      <a class="nav-cta" href="about.html#contact">Contact Me <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero container" aria-labelledby="hero-title">
+      <div class="hero-copy reveal">
+        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> Available for meaningful work</p>
+        <h1 id="hero-title">Hi, I'm<br><em>Al Franzianne</em></h1>
+        <p class="hero-text">I am a student learning full-stack web development. This is my prelim milestone for Weeks
+          1–4, where I practiced HTML, CSS, JavaScript, and Fetch.</p>
+        <div class="hero-actions"><a class="button button-primary" href="projects.html">View my projects <span
+              aria-hidden="true">→</span></a><a class="text-link" href="about.html">About me <span
+              aria-hidden="true">↗</span></a></div>
+        <dl class="stats" aria-label="Portfolio highlights">
+          <div>
+            <dt>04</dt>
+            <dd>Weeks of learning</dd>
+          </div>
+          <div>
+            <dt>03</dt>
+            <dd>Core technologies</dd>
+          </div>
+          <div>
+            <dt>∞</dt>
+            <dd>Curiosity</dd>
+          </div>
+        </dl>
+      </div>
+      <div class="hero-art reveal" aria-label="Abstract illustration of a developer workspace">
+        <div class="art-grid" aria-hidden="true"></div>
+        <div class="art-orbit orbit-one" aria-hidden="true"></div>
+        <div class="art-orbit orbit-two" aria-hidden="true"></div>
+        <div class="code-card">
+          <div class="code-top"><span></span><span></span><span></span><small>portfolio.js</small></div>
+          <pre><code><span class="code-purple">const</span> <span class="code-blue">developer</span> = {
+  name: <span class="code-green">"Hisu-an"</span>,
+  focus: <span class="code-green">"full-stack"</span>,
+  <span class="code-orange">learning</span>: <span class="code-green">true</span>
+};</code></pre>
+          <div class="code-footer"><span class="pulse-line"></span> <span>Crafting the next idea</span></div>
+        </div>
+        <div class="floating-note note-top"><span class="note-icon">✦</span><span><strong>Clean code</strong><small>made
+              human</small></span></div>
+        <div class="floating-note note-bottom"><span class="note-icon orange">⌁</span><span><strong>Always
+              learning</strong><small>one commit at a time</small></span></div>
+      </div>
+    </section>
+    <section class="marquee-band" aria-label="Skills">
+      <div class="marquee-track">
+        <span>HTML5</span><i>✦</i><span>CSS3</span><i>✦</i><span>JavaScript</span><i>✦</i><span>PHP</span><i>✦</i><span>Git
+          & GitHub</span><i>✦</i><span>HTML5</span><i>✦</i><span>CSS3</span><i>✦</i><span>JavaScript</span>
+      </div>
+    </section>
+    <section class="home-intro container reveal" aria-labelledby="intro-title">
+      <div>
+        <p class="eyebrow">What I learned</p>
+        <h2 id="intro-title">Small steps,<br><em>real progress.</em></h2>
+      </div>
+      <div class="intro-copy">
+        <p>For this milestone I used semantic HTML landmarks, responsive CSS layouts, DOM manipulation, and an async
+          request to GitHub. I am still learning, but each week makes the next topic easier.</p><a class="text-link"
+          href="projects.html">See my GitHub projects <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© 2026 Hisu-an. Built with HTML, CSS & JavaScript.</p>
+      <div><a href="about.html#contact">Contact</a><span aria-hidden="true">·</span><a href="projects.html">Projects</a>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
